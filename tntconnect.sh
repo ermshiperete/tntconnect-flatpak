@@ -15,7 +15,7 @@ WINE="/app/bin/wine"
 
 XORG_LOG="/var/log/Xorg.0.log"
 
-declare -ra WINE_PACKAGES=(jet40 mdac28 msxml6 usp10 corefonts tahoma win7)
+declare -ra WINE_PACKAGES=(jet40 mdac28 msxml6 usp10 win7 allfonts)
 declare -ra WINE_SETTINGS=('csmt=on' 'glsl=disabled')
 
 echo "###########################################"

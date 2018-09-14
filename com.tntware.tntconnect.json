@@ -79,13 +79,13 @@
             "sources": [
                 {
                     "type": "archive",
-                    "url": "https://dl.winehq.org/wine/source/3.x/wine-3.8.tar.xz",
-                    "sha256": "02b00c6c948b3bab717e1b1e2075a5406b14d138bd2e01fdb1268a93d1c20d51"
+                    "url": "https://dl.winehq.org/wine/source/3.x/wine-3.15.tar.xz",
+                    "sha256": "2ca2cd95b69f2d89aaa481db34db20cbb249c6aba28ad77ecf383270326ab51e"
                 },
                 {
                     "type": "archive",
-                    "url": "https://github.com/wine-staging/wine-staging/archive/v3.8.tar.gz",
-                    "sha256": "fd40c24e00b3da4498f78885a5d3c4a9699790c1de78f6e43ff151432824f2ad"
+                    "url": "https://github.com/wine-staging/wine-staging/archive/v3.15.tar.gz",
+                    "sha256": "bf209bf102455938ef0b8f678c2c68f134746aef633fbdf56a9c1994309349c4"
                 },
                 {
                     "type": "shell",
@@ -106,8 +106,8 @@
             "sources": [
                 {
                     "type": "archive",
-                    "url": "https://github.com/Winetricks/winetricks/archive/20180513.tar.gz",
-                    "sha256": "626aff64e3d93698704b0b668225d5504fd8ef556e3834f569058deaeafada8e"
+                    "url": "https://github.com/Winetricks/winetricks/archive/20180815.tar.gz",
+                    "sha256": "6dc22357ea1f857b7283250f7c6a68b9dee97e672bbea9a9c45c573d73634200"
                 }
             ]
         },
@@ -141,14 +141,14 @@
           "name": "wine-mono",
           "buildsystem": "simple",
           "build-commands": [
-            "install -D wine-mono-4.7.1.msi /app/share/wine/mono/wine-mono-4.7.1.msi"
+            "install -D wine-mono-4.7.3.msi /app/share/wine/mono/wine-mono-4.7.3.msi"
           ],
           "no-make-install": true,
           "sources": [
             {
               "type": "file",
-              "url": "http://dl.winehq.org/wine/wine-mono/4.7.1/wine-mono-4.7.1.msi",
-              "sha256": "2c8d5db7f833c3413b2519991f5af1f433d59a927564ec6f38a3f1f8b2c629aa"
+              "url": "http://dl.winehq.org/wine/wine-mono/4.7.3/wine-mono-4.7.3.msi",
+              "sha256": "d24a8017371c7e8224a1778bb43a113ed7ed9720efd9d0cda175d42db6106d3a"
             }
           ]
         },
@@ -160,20 +160,6 @@
               "type": "archive",
               "url": "https://ftp.gnu.org/gnu/wget/wget-1.19.4.tar.gz",
               "sha256": "93fb96b0f48a20ff5be0d9d9d3c4a986b469cb853131f9d5fe4cc9cecbc8b5b5"
-            }
-          ]
-        },
-        {
-          "name": "demo-database",
-          "buildsystem": "simple",
-          "build-commands": [
-            "install -D ToonTownCanada-ClarkKent.mpddb /app/share/data/ToonTownCanada-ClarkKent.mpddb"
-          ],
-          "sources": [
-            {
-              "type": "archive",
-              "path": "ToonTownCanada-ClarkKent.zip",
-              "dest-filename": "ToonTownCanada-ClarkKent.mpddb"
             }
           ]
         },
