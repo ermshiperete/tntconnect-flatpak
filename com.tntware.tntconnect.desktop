@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=TntConnect
+Comment=TntConnect is a free program for managing your relationships with your ministry partners.
+Exec=com.tntware.tntconnect
+StartupNotify=true
+Terminal=false
+Type=Application
+MimeType=application/x-ms-dos-executable;application/x-msi;application/x-ms-shortcut;
+Categories=Education;
+Keywords=Build;
+Icon=com.tntware.tntconnect
