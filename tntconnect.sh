@@ -68,10 +68,6 @@ first_run()
 	fi
 	echo "Running TntConnect installer."
 	"${WINE}" "${SETUP}"
-
-	echo "Installing demo database"
-	ls -al /app/share/demo
-	cp "/app/share/demo/ToonTownCanada-ClarkKent.mpddb" "${WINEPREFIX}/"
 }
 
 is_updated(){

@@ -106,8 +106,8 @@
             "sources": [
                 {
                     "type": "archive",
-                    "url": "https://github.com/Winetricks/winetricks/archive/20180513.tar.gz",
-                    "sha256": "626aff64e3d93698704b0b668225d5504fd8ef556e3834f569058deaeafada8e"
+                    "url": "https://github.com/Winetricks/winetricks/archive/20180815.tar.gz",
+                    "sha256": "6dc22357ea1f857b7283250f7c6a68b9dee97e672bbea9a9c45c573d73634200"
                 }
             ]
         },
@@ -160,20 +160,6 @@
               "type": "archive",
               "url": "https://ftp.gnu.org/gnu/wget/wget-1.19.4.tar.gz",
               "sha256": "93fb96b0f48a20ff5be0d9d9d3c4a986b469cb853131f9d5fe4cc9cecbc8b5b5"
-            }
-          ]
-        },
-        {
-          "name": "demo-database",
-          "buildsystem": "simple",
-          "build-commands": [
-            "install -D ToonTownCanada-ClarkKent.mpddb /app/share/data/ToonTownCanada-ClarkKent.mpddb"
-          ],
-          "sources": [
-            {
-              "type": "archive",
-              "path": "ToonTownCanada-ClarkKent.zip",
-              "dest-filename": "ToonTownCanada-ClarkKent.mpddb"
             }
           ]
         },
