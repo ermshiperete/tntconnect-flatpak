@@ -4,7 +4,7 @@ export WINEPREFIX="${HOME}/.local/share/tntconnect"
 export WINEARCH="win32"
 
 VERSION_NUM="3.5.12"
-VERSION_FILE="${WINEPREFIX}/com.tntware.tntconnect.version"
+VERSION_FILE="${WINEPREFIX}/com.tntware.TntConnect.version"
 
 INSTALLER_NAME="SetupTntConnect.exe"
 SETUP="${WINEPREFIX}/${INSTALLER_NAME}"

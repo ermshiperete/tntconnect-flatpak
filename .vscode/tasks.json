@@ -11,7 +11,7 @@
         "--repo=tntconnect-repo",
         "--force-clean",
         "build-dir",
-        "com.tntware.tntconnect.json"
+        "com.tntware.TntConnect.json"
 			],
 			"group": "build",
 			"presentation": {

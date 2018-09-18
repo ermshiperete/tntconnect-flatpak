@@ -6,8 +6,8 @@ This is an attempt to package TntConnect as flatpack package.
 
 To build the flatpak, run the following command:
 
-	flatpak-builder --force-clean --repo=tntconnect-repo build-dir com.tntware.tntconnect.json
+	flatpak-builder --force-clean --repo=tntconnect-repo build-dir com.tntware.TntConnect.json
 
 To run the created flatpak:
 
-	flatpak-builder run com.tntware.tntconnect.json
+	flatpak-builder run com.tntware.TntConnect.json

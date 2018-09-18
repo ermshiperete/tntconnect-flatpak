@@ -1,5 +1,5 @@
 {
-    "app-id": "com.tntware.tntconnect",
+    "app-id": "com.tntware.TntConnect",
     "branch": "master",
     "runtime": "org.freedesktop.Platform/i386",
     "sdk": "org.freedesktop.Sdk/i386",
@@ -181,46 +181,46 @@
           "name": "icons",
           "buildsystem": "simple",
           "build-commands": [
-            "install -Dm644 com.tntware.tntconnect.256x256.png /app/share/icons/hicolor/256x256/apps/com.tntware.tntconnect.png",
-            "install -Dm644 com.tntware.tntconnect.128x128.png /app/share/icons/hicolor/128x128/apps/com.tntware.tntconnect.png",
-            "install -Dm644 com.tntware.tntconnect.64x64.png /app/share/icons/hicolor/64x64/apps/com.tntware.tntconnect.png",
-            "install -Dm644 com.tntware.tntconnect.48x48.png /app/share/icons/hicolor/48x48/apps/com.tntware.tntconnect.png",
-            "install -Dm644 com.tntware.tntconnect.32x32.png /app/share/icons/hicolor/32x32/apps/com.tntware.tntconnect.png",
-            "install -Dm644 com.tntware.tntconnect.16x16.png /app/share/icons/hicolor/16x16/apps/com.tntware.tntconnect.png"
+            "install -Dm644 com.tntware.TntConnect.256x256.png /app/share/icons/hicolor/256x256/apps/com.tntware.TntConnect.png",
+            "install -Dm644 com.tntware.TntConnect.128x128.png /app/share/icons/hicolor/128x128/apps/com.tntware.TntConnect.png",
+            "install -Dm644 com.tntware.TntConnect.64x64.png /app/share/icons/hicolor/64x64/apps/com.tntware.TntConnect.png",
+            "install -Dm644 com.tntware.TntConnect.48x48.png /app/share/icons/hicolor/48x48/apps/com.tntware.TntConnect.png",
+            "install -Dm644 com.tntware.TntConnect.32x32.png /app/share/icons/hicolor/32x32/apps/com.tntware.TntConnect.png",
+            "install -Dm644 com.tntware.TntConnect.16x16.png /app/share/icons/hicolor/16x16/apps/com.tntware.TntConnect.png"
           ],
           "no-make-install": true,
           "sources": [
             {
               "type": "file",
-              "path": "icons/com.tntware.tntconnect.256x256.png"
+              "path": "icons/com.tntware.TntConnect.256x256.png"
             }, {
               "type": "file",
-              "path": "icons/com.tntware.tntconnect.128x128.png"
+              "path": "icons/com.tntware.TntConnect.128x128.png"
             }, {
               "type": "file",
-              "path": "icons/com.tntware.tntconnect.64x64.png"
+              "path": "icons/com.tntware.TntConnect.64x64.png"
             }, {
               "type": "file",
-              "path": "icons/com.tntware.tntconnect.48x48.png"
+              "path": "icons/com.tntware.TntConnect.48x48.png"
             }, {
               "type": "file",
-              "path": "icons/com.tntware.tntconnect.32x32.png"
+              "path": "icons/com.tntware.TntConnect.32x32.png"
             }, {
               "type": "file",
-              "path": "icons/com.tntware.tntconnect.16x16.png"
+              "path": "icons/com.tntware.TntConnect.16x16.png"
             }
           ]
         }, {
           "name": "desktop",
           "buildsystem": "simple",
           "build-commands": [
-              "install -D --mode=644 com.tntware.tntconnect.desktop /app/share/applications/com.tntware.tntconnect.desktop"
+              "install -D --mode=644 com.tntware.TntConnect.desktop /app/share/applications/com.tntware.TntConnect.desktop"
           ],
           "no-make-install": true,
           "sources": [
               {
                 "type": "file",
-                "path": "com.tntware.tntconnect.desktop"
+                "path": "com.tntware.TntConnect.desktop"
               }
           ]
         },
@@ -228,13 +228,13 @@
             "name": "metadata",
             "buildsystem": "simple",
             "build-commands": [
-                "install -D --mode=644 com.tntware.tntconnect.appdata.xml /app/share/metainfo/com.tntware.tntconnect.appdata.xml"
+                "install -D --mode=644 com.tntware.TntConnect.appdata.xml /app/share/metainfo/com.tntware.TntConnect.appdata.xml"
             ],
             "no-make-install": true,
             "sources": [
                 {
                     "type": "file",
-                    "path": "com.tntware.tntconnect.appdata.xml"
+                    "path": "com.tntware.TntConnect.appdata.xml"
                 }
             ]
         }

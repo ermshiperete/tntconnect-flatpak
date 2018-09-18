@@ -1,24 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <component type="desktop">
-    <id>com.tntware.tntconnect.desktop</id>
+    <id>com.tntware.TntConnect.desktop</id>
     <metadata_license>CC0-1.0</metadata_license>
     <project_license>Other</project_license>
     <name>TntConnect</name>
     <summary>TntConnect is a free program for managing your relationships with your ministry partners.</summary>
     <description>
-        <p>TntConnect is a free program for managing your relationships with your ministry partners.  Although anyone might find it useful, it is designed specifically for missionaries who raise their own support.  The hope in sharing TntConnect with you is that you, a fellow missionary, will have more time to do what God has called you to do. 
+        <p>TntConnect is a free program for managing your relationships with your ministry partners.  Although anyone might find it useful, it is designed specifically for missionaries who raise their own support.  The hope in sharing TntConnect with you is that you, a fellow missionary, will have more time to do what God has called you to do.
 
 TntConnect is yours for free!  This means that you can download it and run it for free.  Feel free to share it with your friends.  I hope you find this software useful to you and your ministry.
 
 TntConnect is available in: Arabic, Dutch, English, French, German, Japanese, Korean, Portuguese, Russian, Simplified Chinese, Spanish and Thai.</p>
     </description>
-    
+
     <screenshots>
         <screenshot type="default">
             <image width="497" height="358">https://www.tntware.com/tntconnect/cfs-filesystemfile.ashx/__key/CommunityServer.Blogs.Components.WeblogFiles/en.images/7801.contact_5F00_contactview_5F00_zoom48.gif</image>
         </screenshot>
     </screenshots>
-    
+
     <developer_name>Troy Wolbrink/Eberhard Beilharz</developer_name>
 
     <url type="homepage">https://www.tntware.com/tntconnect</url>
