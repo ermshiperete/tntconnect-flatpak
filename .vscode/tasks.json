@@ -10,6 +10,7 @@
 			"args": [
         "--repo=tntconnect-repo",
         "--force-clean",
+        "--ccache",
         "build-dir",
         "com.tntware.TntConnect.json"
 			],
