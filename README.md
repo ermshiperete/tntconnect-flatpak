@@ -10,4 +10,4 @@ To build the flatpak, run the following command:
 
 To run the created flatpak:
 
-	flatpak-builder run com.tntware.TntConnect.json
+	flatpak-builder --run build-dir com.tntware.TntConnect.json tntconnect.sh

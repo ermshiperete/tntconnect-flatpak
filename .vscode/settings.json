@@ -1,0 +1,9 @@
+{
+	"files.exclude": {
+		".flatpak-builder/": true,
+		"build-dir/": true,
+		"tmp/": true,
+    "tntconnect-repo/": true,
+    "wineprefix/": true
+	}
+}
