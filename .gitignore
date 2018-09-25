@@ -1,3 +1,5 @@
 .flatpak-builder/
 build-dir/
 tntconnect-repo/
+tmp/
+TntConnect.tar.gz

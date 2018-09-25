@@ -1,242 +1,264 @@
 {
-    "app-id": "com.tntware.TntConnect",
-    "branch": "master",
-    "runtime": "org.freedesktop.Platform/i386",
-    "sdk": "org.freedesktop.Sdk/i386",
-    "runtime-version": "1.6",
-    "tags": [
-        "proprietary"
-    ],
-    "command": "tntconnect.sh",
-    "build-options": {
-        "cflags": "-O1 -pipe",
-        "env": {
-          "V": "0"
+  "app-id": "com.tntware.TntConnect",
+  "branch": "master",
+  "runtime": "org.freedesktop.Platform/i386",
+  "sdk": "org.freedesktop.Sdk/i386",
+  "runtime-version": "1.6",
+  "tags": [
+      "proprietary"
+  ],
+  "command": "tntconnect.sh",
+  "build-options": {
+      "cflags": "-O1 -pipe",
+      "env": {
+        "V": "0"
+      }
+  },
+  "finish-args": [
+    "--socket=x11",
+    "--share=network",
+    "--share=ipc",
+    "--device=dri",
+    "--allow=multiarch",
+    "--socket=pulseaudio",
+    "--filesystem=/var/log:ro",
+    "--filesystem=xdg-documents",
+    "--filesystem=host",
+    "--filesystem=home",
+    "--filesystem=/tmp",
+    "--env=WINEDEBUG=-all",
+    "--socket=system-bus",
+    "--socket=session-bus",
+    "--talk-name=org.freedesktop.secrets",
+    "--talk-name=org.freedesktop.portal.Documents",
+    "--system-talk-name=org.freedesktop.secrets",
+    "--system-talk-name=org.freedesktop.portal.Documents",
+    "--talk-name=org.freedesktop.portal.desktop",
+    "--system-talk-name=org.freedesktop.portal.desktop",
+    "--device=all",
+    "--filesystem=xdg-run/dconf",
+    "--filesystem=~/.config/dconf:ro",
+    "--talk-name=ca.desrt.dconf",
+    "--env=DCONF_USER_CONFIG_DIR=.config/dconf"
+  ],
+  "modules": [
+    {
+      "name": "wine",
+      "build-options": {
+        "make-args": [
+          "--silent"
+        ]
+      },
+      "config-opts": [
+        "--libdir=/app/lib",
+        "--disable-win16",
+        "--with-x",
+        "--with-cups",
+        "--without-curses",
+        "--without-capi",
+        "--without-glu",
+        "--without-gphoto",
+        "--without-gsm",
+        "--without-hal",
+        "--without-ldap",
+        "--without-netapi"
+      ],
+      "cleanup": [
+        "/bin/function_grep.pl",
+        "/bin/msiexec",
+        "/bin/widl",
+        "/bin/wine64-preloader",
+        "/bin/winebuild",
+        "/bin/wineconsole",
+        "/bin/winedbg",
+        "/bin/winefile",
+        "/bin/winegcc",
+        "/bin/winemine",
+        "/bin/wrc",
+        "/bin/msidb",
+        "/bin/notepad",
+        "/bin/regsvr32",
+        "/bin/wineboot",
+        "/bin/winecfg",
+        "/bin/winecpp",
+        "/bin/winedump",
+        "/bin/wineg++",
+        "/bin/winemaker",
+        "/bin/winepath",
+        "/bin/wmc",
+        "/include",
+        "/share/man",
+        "/share/applications"
+      ],
+      "sources": [
+        {
+          "type": "archive",
+          "url": "https://dl.winehq.org/wine/source/3.x/wine-3.8.tar.xz",
+          "sha256": "02b00c6c948b3bab717e1b1e2075a5406b14d138bd2e01fdb1268a93d1c20d51"
+        },
+        {
+          "type": "archive",
+          "url": "https://github.com/wine-staging/wine-staging/archive/v3.8.tar.gz",
+          "sha256": "fd40c24e00b3da4498f78885a5d3c4a9699790c1de78f6e43ff151432824f2ad"
+        },
+        {
+          "type": "shell",
+          "commands": [
+              "./patches/patchinstall.sh DESTDIR=$(pwd) --all"
+          ]
         }
+      ]
     },
-    "finish-args": [
-      "--socket=x11",
-      "--share=network",
-      "--share=ipc",
-      "--device=dri",
-      "--allow=multiarch",
-      "--socket=pulseaudio",
-      "--filesystem=/var/log:ro",
-      "--filesystem=xdg-documents",
-      "--filesystem=home",
-      "--filesystem=/tmp",
-      "--env=WINEDEBUG=-all"
-    ],
-    "modules": [
+    {
+      "name": "winetricks",
+      "buildsystem": "simple",
+      "build-commands": [
+        "make",
+        "make PREFIX=/app install",
+        "chmod +x /app/bin/winetricks",
+        "declare -ra WINE_PACKAGES=(jet40 mdac28 msxml6 usp10 corefonts tahoma win7)",
+        "winetricks --unattended \"${WINE_PACKAGES[@]}\""
+      ],
+      "sources": [
         {
-            "name": "wine",
-            "build-options": {
-                "make-args": [
-                    "--silent"
-                ]
-            },
-            "config-opts": [
-                "--libdir=/app/lib",
-                "--disable-win16",
-                "--with-x",
-                "--with-cups",
-                "--without-curses",
-                "--without-capi",
-                "--without-glu",
-                "--without-gphoto",
-                "--without-gsm",
-                "--without-hal",
-                "--without-ldap",
-                "--without-netapi"
-            ],
-            "cleanup": [
-                "/bin/function_grep.pl",
-                "/bin/msiexec",
-                "/bin/widl",
-                "/bin/wine64-preloader",
-                "/bin/winebuild",
-                "/bin/wineconsole",
-                "/bin/winedbg",
-                "/bin/winefile",
-                "/bin/winegcc",
-                "/bin/winemine",
-                "/bin/wrc",
-                "/bin/msidb",
-                "/bin/notepad",
-                "/bin/regsvr32",
-                "/bin/wineboot",
-                "/bin/winecfg",
-                "/bin/winecpp",
-                "/bin/winedump",
-                "/bin/wineg++",
-                "/bin/winemaker",
-                "/bin/winepath",
-                "/bin/wmc",
-                "/include",
-                "/share/man",
-                "/share/applications"
-            ],
-            "sources": [
-                {
-                    "type": "archive",
-                    "url": "https://dl.winehq.org/wine/source/3.x/wine-3.8.tar.xz",
-                    "sha256": "02b00c6c948b3bab717e1b1e2075a5406b14d138bd2e01fdb1268a93d1c20d51"
-                },
-                {
-                    "type": "archive",
-                    "url": "https://github.com/wine-staging/wine-staging/archive/v3.8.tar.gz",
-                    "sha256": "fd40c24e00b3da4498f78885a5d3c4a9699790c1de78f6e43ff151432824f2ad"
-                },
-                {
-                    "type": "shell",
-                    "commands": [
-                        "./patches/patchinstall.sh DESTDIR=$(pwd) --all"
-                    ]
-                }
-            ]
-        },
-        {
-            "name": "winetricks",
-            "buildsystem": "simple",
-            "build-commands": [
-                "make",
-                "make PREFIX=/app install",
-                "chmod +x /app/bin/winetricks"
-            ],
-            "sources": [
-                {
-                    "type": "archive",
-                    "url": "https://github.com/Winetricks/winetricks/archive/20180815.tar.gz",
-                    "sha256": "6dc22357ea1f857b7283250f7c6a68b9dee97e672bbea9a9c45c573d73634200"
-                }
-            ]
-        },
-        {
-          "name": "cabextract",
-          "buildsystem": "autotools",
-          "sources": [
-            {
-              "type": "archive",
-              "url": "https://www.cabextract.org.uk/cabextract-1.6.tar.gz",
-              "sha256": "cee661b56555350d26943c5e127fc75dd290b7f75689d5ebc1f04957c4af55fb"
-            }
-          ]
-        },
-        {
-          "name": "wine-gecko",
-          "buildsystem": "simple",
-          "build-commands": [
-            "install -D wine_gecko-2.47-x86.msi /app/share/wine/gecko/wine_gecko-2.47-x86.msi"
-          ],
-          "no-make-install": true,
-          "sources": [
-            {
-              "type": "file",
-              "url": "http://dl.winehq.org/wine/wine-gecko/2.47/wine_gecko-2.47-x86.msi",
-              "sha256": "3b8a361f5d63952d21caafd74e849a774994822fb96c5922b01d554f1677643a"
-            }
-          ]
-        },
-        {
-          "name": "wine-mono",
-          "buildsystem": "simple",
-          "build-commands": [
-            "install -D wine-mono-4.7.1.msi /app/share/wine/mono/wine-mono-4.7.1.msi"
-          ],
-          "no-make-install": true,
-          "sources": [
-            {
-              "type": "file",
-              "url": "http://dl.winehq.org/wine/wine-mono/4.7.1/wine-mono-4.7.1.msi",
-              "sha256": "2c8d5db7f833c3413b2519991f5af1f433d59a927564ec6f38a3f1f8b2c629aa"
-            }
-          ]
-        },
-        {
-          "name": "wget",
-          "buildsystem": "autotools",
-          "sources": [
-            {
-              "type": "archive",
-              "url": "https://ftp.gnu.org/gnu/wget/wget-1.19.4.tar.gz",
-              "sha256": "93fb96b0f48a20ff5be0d9d9d3c4a986b469cb853131f9d5fe4cc9cecbc8b5b5"
-            }
-          ]
-        },
-        {
-          "name": "tntconnect-installer",
-          "buildsystem": "simple",
-          "build-commands": [
-            "install tntconnect.sh /app/bin"
-          ],
-          "no-make-install": true,
-          "sources": [
-            {
-              "type": "file",
-              "path": "tntconnect.sh"
-            }
-          ]
-        },
-        {
-          "name": "icons",
-          "buildsystem": "simple",
-          "build-commands": [
-            "install -Dm644 com.tntware.TntConnect.256x256.png /app/share/icons/hicolor/256x256/apps/com.tntware.TntConnect.png",
-            "install -Dm644 com.tntware.TntConnect.128x128.png /app/share/icons/hicolor/128x128/apps/com.tntware.TntConnect.png",
-            "install -Dm644 com.tntware.TntConnect.64x64.png /app/share/icons/hicolor/64x64/apps/com.tntware.TntConnect.png",
-            "install -Dm644 com.tntware.TntConnect.48x48.png /app/share/icons/hicolor/48x48/apps/com.tntware.TntConnect.png",
-            "install -Dm644 com.tntware.TntConnect.32x32.png /app/share/icons/hicolor/32x32/apps/com.tntware.TntConnect.png",
-            "install -Dm644 com.tntware.TntConnect.16x16.png /app/share/icons/hicolor/16x16/apps/com.tntware.TntConnect.png"
-          ],
-          "no-make-install": true,
-          "sources": [
-            {
-              "type": "file",
-              "path": "icons/com.tntware.TntConnect.256x256.png"
-            }, {
-              "type": "file",
-              "path": "icons/com.tntware.TntConnect.128x128.png"
-            }, {
-              "type": "file",
-              "path": "icons/com.tntware.TntConnect.64x64.png"
-            }, {
-              "type": "file",
-              "path": "icons/com.tntware.TntConnect.48x48.png"
-            }, {
-              "type": "file",
-              "path": "icons/com.tntware.TntConnect.32x32.png"
-            }, {
-              "type": "file",
-              "path": "icons/com.tntware.TntConnect.16x16.png"
-            }
-          ]
-        }, {
-          "name": "desktop",
-          "buildsystem": "simple",
-          "build-commands": [
-              "install -D --mode=644 com.tntware.TntConnect.desktop /app/share/applications/com.tntware.TntConnect.desktop"
-          ],
-          "no-make-install": true,
-          "sources": [
-              {
-                "type": "file",
-                "path": "com.tntware.TntConnect.desktop"
-              }
-          ]
-        },
-        {
-            "name": "metadata",
-            "buildsystem": "simple",
-            "build-commands": [
-                "install -D --mode=644 com.tntware.TntConnect.appdata.xml /app/share/metainfo/com.tntware.TntConnect.appdata.xml"
-            ],
-            "no-make-install": true,
-            "sources": [
-                {
-                    "type": "file",
-                    "path": "com.tntware.TntConnect.appdata.xml"
-                }
-            ]
+          "type": "archive",
+          "url": "https://github.com/Winetricks/winetricks/archive/20180815.tar.gz",
+          "sha256": "6dc22357ea1f857b7283250f7c6a68b9dee97e672bbea9a9c45c573d73634200"
         }
-    ]
+      ]
+    },
+    {
+      "name": "cabextract",
+      "buildsystem": "autotools",
+      "sources": [
+        {
+          "type": "archive",
+          "url": "https://www.cabextract.org.uk/cabextract-1.6.tar.gz",
+          "sha256": "cee661b56555350d26943c5e127fc75dd290b7f75689d5ebc1f04957c4af55fb"
+        }
+      ]
+    },
+    {
+      "name": "wine-gecko",
+      "buildsystem": "simple",
+      "build-commands": [
+        "install -D wine_gecko-2.47-x86.msi /app/share/wine/gecko/wine_gecko-2.47-x86.msi"
+      ],
+      "no-make-install": true,
+      "sources": [
+        {
+          "type": "file",
+          "url": "http://dl.winehq.org/wine/wine-gecko/2.47/wine_gecko-2.47-x86.msi",
+          "sha256": "3b8a361f5d63952d21caafd74e849a774994822fb96c5922b01d554f1677643a"
+        }
+      ]
+    },
+    {
+      "name": "wine-mono",
+      "buildsystem": "simple",
+      "build-commands": [
+        "install -D wine-mono-4.7.1.msi /app/share/wine/mono/wine-mono-4.7.1.msi"
+      ],
+      "no-make-install": true,
+      "sources": [
+        {
+          "type": "file",
+          "url": "http://dl.winehq.org/wine/wine-mono/4.7.1/wine-mono-4.7.1.msi",
+          "sha256": "2c8d5db7f833c3413b2519991f5af1f433d59a927564ec6f38a3f1f8b2c629aa"
+        }
+      ]
+    },
+    {
+      "name": "wget",
+      "buildsystem": "autotools",
+      "sources": [
+        {
+          "type": "archive",
+          "url": "https://ftp.gnu.org/gnu/wget/wget-1.19.4.tar.gz",
+          "sha256": "93fb96b0f48a20ff5be0d9d9d3c4a986b469cb853131f9d5fe4cc9cecbc8b5b5"
+        }
+      ]
+    },
+    {
+      "name": "metadata",
+      "buildsystem": "simple",
+      "build-commands": [
+        "install -Dm644 com.tntware.TntConnect.256x256.png /app/share/icons/hicolor/256x256/apps/com.tntware.TntConnect.png",
+        "install -Dm644 com.tntware.TntConnect.128x128.png /app/share/icons/hicolor/128x128/apps/com.tntware.TntConnect.png",
+        "install -Dm644 com.tntware.TntConnect.64x64.png /app/share/icons/hicolor/64x64/apps/com.tntware.TntConnect.png",
+        "install -Dm644 com.tntware.TntConnect.48x48.png /app/share/icons/hicolor/48x48/apps/com.tntware.TntConnect.png",
+        "install -Dm644 com.tntware.TntConnect.32x32.png /app/share/icons/hicolor/32x32/apps/com.tntware.TntConnect.png",
+        "install -Dm644 com.tntware.TntConnect.16x16.png /app/share/icons/hicolor/16x16/apps/com.tntware.TntConnect.png",
+        "install -D --mode=644 com.tntware.TntConnect.desktop /app/share/applications/com.tntware.TntConnect.desktop",
+        "install -D --mode=644 com.tntware.TntConnect.appdata.xml /app/share/metainfo/com.tntware.TntConnect.appdata.xml"
+      ],
+      "no-make-install": true,
+      "sources": [
+        {
+          "type": "file",
+          "path": "icons/com.tntware.TntConnect.256x256.png"
+        }, {
+          "type": "file",
+          "path": "icons/com.tntware.TntConnect.128x128.png"
+        }, {
+          "type": "file",
+          "path": "icons/com.tntware.TntConnect.64x64.png"
+        }, {
+          "type": "file",
+          "path": "icons/com.tntware.TntConnect.48x48.png"
+        }, {
+          "type": "file",
+          "path": "icons/com.tntware.TntConnect.32x32.png"
+        }, {
+          "type": "file",
+          "path": "icons/com.tntware.TntConnect.16x16.png"
+        }, {
+          "type": "file",
+          "path": "com.tntware.TntConnect.desktop"
+        }, {
+          "type": "file",
+          "path": "com.tntware.TntConnect.appdata.xml"
+        }
+      ]
+    },
+    {
+      "name": "tntconnect",
+      "buildsystem": "simple",
+      "build-commands": [
+        "install -d /app/bin",
+        "install tntconnect.sh /app/bin",
+        "install -d /app/extra",
+        "install TntConnect.tar.gz /app/extra",
+        "cd /app/extra",
+        "tar xfz TntConnect.tar.gz",
+        "rm TntConnect.tar.gz",
+        "cp -a wineprefix /app/extra",
+        "rm -rf /app/extra/wineprefix/dosdevices/c",
+        "ln -sf ../drive_c /app/extra/wineprefix/dosdevices/c:"
+      ],
+      "sources": [
+        {
+          "type": "file",
+          "path": "TntConnect.tar.gz"
+        }, {
+          "type": "file",
+          "path": "tntconnect.sh"
+        }
+      ]
+    },
+    {
+      "name": "TntConnect-update",
+      "buildsystem": "simple",
+      "build-commands": [
+        "install -D TntConnect.exe '/app/extra/wineprefix/drive_c/Program Files/TntWare/TntConnect/TntConnect.exe'"
+      ],
+      "sources": [
+        {
+          "type": "archive",
+          "url": "https://www.dropbox.com/s/rm0o8zmds47198f/TntConnect%20with%20cat%20proc%20mounts.zip?dl=1",
+          "sha256": "fd015003422a77923ee5874e69e6931eba11ad10105d166d4556ac91be7a14f2"
+        }
+      ]
+    }
+  ]
 }
