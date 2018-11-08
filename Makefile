@@ -14,12 +14,10 @@ download:
 	mkdir -p $(current_dir)/tmp
 	wget --continue -O $(current_dir)/tmp/TntConnect.dmg https://download.tntware.com/tntconnect/archive/$(VERSION)/TntConnect.$(VERSION).dmg
 
-tmp/TntConnect\ $(VERSION): tmp/TntConnect.dmg
+tmp/TntConnect.dmg: download
 	cd $(current_dir)/tmp && \
 	7z -y x TntConnect.dmg && \
-	7z -y x 2.hfs
-
-tmp/TntConnect.dmg: download
+	7z -y x 2.hfs || true
 
 TntConnect.tar.gz: tmp/TntConnect.dmg
 	cd $(current_dir)/tmp/TntConnect\ $(VERSION)/TntConnect.app/Contents/Resources && \

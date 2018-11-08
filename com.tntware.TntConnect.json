@@ -233,7 +233,7 @@
         "tar xfz TntConnect.tar.gz",
         "rm TntConnect.tar.gz",
         "cp -a wineprefix /app/extra",
-        "rm /app/extra/wineprefix/dosdevices/c",
+        "rm -rf /app/extra/wineprefix/dosdevices/c",
         "ln -sf ../drive_c /app/extra/wineprefix/dosdevices/c:"
       ],
       "sources": [
@@ -243,6 +243,20 @@
         }, {
           "type": "file",
           "path": "tntconnect.sh"
+        }
+      ]
+    },
+    {
+      "name": "TntConnect-update",
+      "buildsystem": "simple",
+      "build-commands": [
+        "install -D TntConnect.exe '/app/extra/wineprefix/drive_c/Program Files/TntWare/TntConnect/TntConnect.exe'"
+      ],
+      "sources": [
+        {
+          "type": "archive",
+          "url": "https://www.dropbox.com/s/rm0o8zmds47198f/TntConnect%20with%20cat%20proc%20mounts.zip?dl=1",
+          "sha256": "fd015003422a77923ee5874e69e6931eba11ad10105d166d4556ac91be7a14f2"
         }
       ]
     }
