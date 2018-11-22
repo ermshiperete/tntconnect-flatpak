@@ -8,7 +8,7 @@ build: TntConnect.tar.gz
 	flatpak-builder --repo=tntconnect-repo --force-clean --ccache build-dir com.tntware.TntConnect.json
 
 run:
-	flatpak-builder --run build-dir com.tntware.TntConnect.json tntconnect.sh
+	flatpak-builder --verbose --run build-dir com.tntware.TntConnect.json tntconnect.sh
 
 download:
 	mkdir -p $(current_dir)/tmp
