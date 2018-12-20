@@ -2,13 +2,16 @@ VERSION=3.5.10
 mkfile_path := $(abspath $(lastword $(MAKEFILE_LIST)))
 current_dir := $(abspath $(patsubst %/,%,$(dir $(mkfile_path))))
 
-all: build
+all: package
 
 build: TntConnect.tar.gz
-	flatpak-builder --repo=tntconnect-repo --force-clean --ccache build-dir com.tntware.TntConnect.json
+	flatpak-builder --arch=i386 --repo=tntconnect-repo --force-clean --ccache build-dir com.tntware.TntConnect.json
+
+package: build
+	flatpak build-bundle --arch=i386 tntconnect-repo tntconnect.flatpak com.tntware.TntConnect
 
 run:
-	flatpak-builder --verbose --run build-dir com.tntware.TntConnect.json tntconnect.sh
+	flatpak-builder --arch=i386 --verbose --run build-dir com.tntware.TntConnect.json tntconnect.sh
 
 download:
 	mkdir -p $(current_dir)/tmp

@@ -10,15 +10,15 @@ VERSION_FILE="${WINEPREFIX}/com.tntware.TntConnect.version"
 
 RUN_DIR="${WINEPREFIX}/drive_c/Program Files/TntWare/TntConnect"
 RUN_CMD="TntConnect.exe"
-#RUN_CMD="${WINEPREFIX}/drive_c/Windows/Notepad.exe"
 WINE="/app/bin/wine"
 
 declare -ra WINE_PACKAGES=(jet40 mdac28 msxml6 usp10 corefonts tahoma win7)
 declare -ra WINE_SETTINGS=('csmt=on' 'glsl=disabled')
 
 set_wine_settings(){
-	echo "Installing wine requirements."
-	winetricks --unattended "${WINE_PACKAGES[@]}"
+	echo "not setting wine settingss"
+#	echo "Installing wine requirements."
+#	winetricks --unattended "${WINE_PACKAGES[@]}"
 
 #	echo "Setting wine settings."
 #	winetricks --unattended "${WINE_SETTINGS[@]}"
@@ -80,14 +80,10 @@ startup()
 		fi
 	fi
 
-	echo
-	echo "Calling ntlm_auth"
-	ntlm_auth --version
-
 	echo "Starting TntConnect..."
 	cd "$RUN_DIR"
-	#"${WINE}" "${RUN_CMD}"
-	WINEDEBUG=+relay,+seh,+tid "${WINE}" "${RUN_CMD}" > /var/data/tntconnect/output 2>&1
+	"${WINE}" "${RUN_CMD}"
+	#WINEDEBUG=+relay,+seh,+tid "${WINE}" "${RUN_CMD}" > /var/data/tntconnect/output 2>&1
 	#WINEDEBUG=+relay,+seh,+tid,+odbc,+ole "${WINE}" "${RUN_CMD}" > /var/data/tntconnect/output 2>&1
 	#WINEDEBUG=+all "${WINE}" "${RUN_CMD}" > /var/data/tntconnect/output 2>&1
 }
