@@ -4,6 +4,8 @@
   "runtime": "org.freedesktop.Platform/i386",
   "sdk": "org.freedesktop.Sdk/i386",
   "runtime-version": "1.6",
+  "base": "com.ermshiperete.wine.BaseApp",
+  "base-version": "develop",
   "tags": [
     "proprietary"
   ],
@@ -42,126 +44,6 @@
     "--env=DCONF_USER_CONFIG_DIR=.config/dconf"
   ],
   "modules": [
-    {
-      "name": "dpkg",
-      "buildsystem": "autotools",
-      "sources": [
-        {
-          "type": "archive",
-          "url": "http://archive.ubuntu.com/ubuntu/pool/main/d/dpkg/dpkg_1.19.0.5ubuntu2.tar.xz",
-          "sha256": "29444a09e6976e9b9adde799acd78d7049bf5c933f4d49b249a11f167d79d5f4"
-        }
-      ]
-    },
-    {
-      "name": "wine",
-      "buildsystem": "simple",
-      "build-options": {
-        "make-args": [
-          "--silent"
-        ]
-      },
-      "cleanup": [
-        "/bin/function_grep.pl",
-        "/bin/msiexec",
-        "/bin/widl",
-        "/bin/wine64-preloader",
-        "/bin/winebuild",
-        "/bin/wineconsole",
-        "/bin/winefile",
-        "/bin/winegcc",
-        "/bin/winemine",
-        "/bin/wrc",
-        "/bin/msidb",
-        "/bin/notepad",
-        "/bin/regsvr32",
-        "/bin/wineboot",
-        "/bin/winecfg",
-        "/bin/winecpp",
-        "/bin/winedump",
-        "/bin/wineg++",
-        "/bin/winemaker",
-        "/bin/winepath",
-        "/bin/wmc",
-        "/include",
-        "/share/man",
-        "/share/applications",
-        "/bin/dpkg*"
-      ],
-      "build-commands": [
-        "dpkg -x wine-devel_4.0~rc3~xenial_i386.deb /tmp/wine-devel && dpkg -x wine-devel-i386_4.0~rc3~xenial_i386.deb /tmp/wine-devel && rm -rf /tmp/wine-devel/opt/wine-devel/share/applications && rm -rf /tmp/wine-devel/opt/wine-devel/share/man && cp -a /tmp/wine-devel/opt/wine-devel/* /app/",
-        "dpkg -x libudev1_229-4ubuntu21.9_i386.deb /tmp/wine-devel && cp -a /tmp/wine-devel/lib/i386-linux-gnu/* /app/lib/"
-      ],
-      "sources": [
-        {
-          "type": "file",
-          "url": "https://dl.winehq.org/wine-builds/ubuntu/dists/xenial/main/binary-i386/wine-devel_4.0~rc3~xenial_i386.deb",
-          "sha256": "6c7c107e4dd89d64417b3d4ad66c76fa9e33187259737ad9a7efa0945a8985fb"
-        },
-        {
-          "type": "file",
-          "url": "https://dl.winehq.org/wine-builds/ubuntu/dists/xenial/main/binary-i386/wine-devel-i386_4.0~rc3~xenial_i386.deb",
-          "sha256": "f74ee064786d0108d5c884a45d0bdd75139e1a80fefec28a184d294bfb9a498d"
-        },
-        {
-          "type": "file",
-          "url": "http://security.ubuntu.com/ubuntu/pool/main/s/systemd/libudev1_229-4ubuntu21.9_i386.deb",
-          "sha256": "3c25e0d1cf4a6b812ec9e8ca4630ff3a239d8c87cc861a8a51b2dd3a02f87300"
-        }
-      ]
-    },
-    {
-      "name": "cabextract",
-      "buildsystem": "autotools",
-      "sources": [
-        {
-          "type": "archive",
-          "url": "https://www.cabextract.org.uk/cabextract-1.6.tar.gz",
-          "sha256": "cee661b56555350d26943c5e127fc75dd290b7f75689d5ebc1f04957c4af55fb"
-        }
-      ]
-    },
-    {
-      "name": "wine-gecko",
-      "buildsystem": "simple",
-      "build-commands": [
-        "install -D wine_gecko-2.47-x86.msi /app/share/wine/gecko/wine_gecko-2.47-x86.msi"
-      ],
-      "no-make-install": true,
-      "sources": [
-        {
-          "type": "file",
-          "url": "http://dl.winehq.org/wine/wine-gecko/2.47/wine_gecko-2.47-x86.msi",
-          "sha256": "3b8a361f5d63952d21caafd74e849a774994822fb96c5922b01d554f1677643a"
-        }
-      ]
-    },
-    {
-      "name": "wine-mono",
-      "buildsystem": "simple",
-      "build-commands": [
-        "install -D wine-mono-4.7.1.msi /app/share/wine/mono/wine-mono-4.7.1.msi"
-      ],
-      "no-make-install": true,
-      "sources": [
-        {
-          "type": "file",
-          "url": "http://dl.winehq.org/wine/wine-mono/4.7.1/wine-mono-4.7.1.msi",
-          "sha256": "2c8d5db7f833c3413b2519991f5af1f433d59a927564ec6f38a3f1f8b2c629aa"
-        }
-      ]
-    },
-    {
-      "name": "wget",
-      "buildsystem": "autotools",
-      "sources": [
-        {
-          "type": "archive",
-          "url": "https://ftp.gnu.org/gnu/wget/wget-1.19.4.tar.gz",
-          "sha256": "93fb96b0f48a20ff5be0d9d9d3c4a986b469cb853131f9d5fe4cc9cecbc8b5b5"
-        }
-      ]
-    },
     {
       "name": "metadata",
       "buildsystem": "simple",

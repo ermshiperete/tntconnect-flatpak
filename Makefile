@@ -5,7 +5,13 @@ current_dir := $(abspath $(patsubst %/,%,$(dir $(mkfile_path))))
 all: package
 
 build: TntConnect.tar.gz
-	flatpak-builder --arch=i386 --repo=tntconnect-repo --force-clean --ccache build-dir com.tntware.TntConnect.json
+	flatpak-builder --verbose --arch=i386 --repo=tntconnect-repo --force-clean --ccache build-dir com.tntware.TntConnect.json
+
+wine:
+	flatpak-builder --verbose --arch=i386 --repo=tntconnect-repo --force-clean --ccache build-dir-wine  com.ermshiperete.wine.BaseApp.yml
+
+wine-package: wine
+	flatpak build-bundle --arch=i386 tntconnect-repo wine.BaseApp.flatpak com.ermshiperete.wine.BaseApp
 
 package: build
 	flatpak build-bundle --arch=i386 tntconnect-repo tntconnect.flatpak com.tntware.TntConnect
