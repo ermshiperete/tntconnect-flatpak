@@ -1,7 +1,7 @@
 #!/bin/bash
 
 #export WINEPREFIX="${HOME}/.local/share/tntconnect"
-#export WINEPREFIX="/app/extra/wineprefix"
+#export WINEPREFIX="/app/tntconnect/wineprefix"
 export WINEPREFIX="/var/data/tntconnect"
 export WINEARCH="win32"
 
@@ -41,10 +41,10 @@ set_wine_settings(){
 first_run()
 {
 	# TntConnect writes it's config files in the current directory
-	# Running files in /app/extra wont work, instead make a copy to
+	# Running files in /app/tntconnect wont work, instead make a copy to
 	# /var/data a.k.a $XDG_DATA_HOME
 	mkdir -p $WINEPREFIX
-	cp -a /app/extra/wineprefix/* $WINEPREFIX
+	cp -a /app/tntconnect/wineprefix/* $WINEPREFIX
 
 	set_wine_settings
 
