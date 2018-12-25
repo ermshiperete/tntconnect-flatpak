@@ -1,5 +1,5 @@
-id: com.ermshiperete.wine.BaseApp
-branch: develop
+id: de.ermshiperete.wine.BaseApp
+branch: 4.0
 
 runtime: org.freedesktop.Platform
 runtime-version: 1.6

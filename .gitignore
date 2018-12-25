@@ -4,4 +4,4 @@ build-dir-wine/
 tntconnect-repo/
 tmp/
 TntConnect.tar.gz
-tntconnect.flatpak
+*.flatpak
