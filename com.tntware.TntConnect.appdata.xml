@@ -11,6 +11,7 @@
         <p>TntConnect is yours for free!  This means that you can download it and run it for free.  Feel free to share it with your friends.  I hope you find this software useful to you and your ministry.</p>
         <p>Created with consent from TntWare. This is not an official TntWare package. TntWare doesn’t officially support TntConnect on Linux.</p>
         <p>TntConnect is available in: Arabic, Dutch, English, French, German, Japanese, Korean, Portuguese, Russian, Simplified Chinese, Spanish and Thai.</p>
+        <p><b>NOTE:</b> Due to a bug in Wine it's currently not possible for TntConnect to check if a database is on an encrypted drive, i.e. a database can't be loaded if the option "Require this database to be on an encrypted drive" is checked.</p>
     </description>
 
     <screenshots>
@@ -61,7 +62,7 @@
     </content_rating>
 
     <releases>
-        <release date="2018-08-10" version="3.5r12.0">
+        <release date="2018-12-27" version="3.5r10.0">
             <description>
                 <ul>
                     <li>Initial release of TntConnect as flatpak.</li>

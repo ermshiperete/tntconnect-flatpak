@@ -1,7 +1,5 @@
 #!/bin/bash
 
-#export WINEPREFIX="${HOME}/.local/share/tntconnect"
-#export WINEPREFIX="/app/tntconnect/wineprefix"
 export WINEPREFIX="/var/data/tntconnect"
 export WINEARCH="win32"
 

@@ -19,29 +19,10 @@
   "finish-args": [
     "--socket=x11",
     "--share=network",
-    "--share=ipc",
-    "--device=dri",
     "--allow=multiarch",
-    "--socket=pulseaudio",
-    "--filesystem=/var/log:ro",
     "--filesystem=xdg-documents",
-    "--filesystem=host",
-    "--filesystem=home",
-    "--filesystem=/tmp",
     "--env=WINEDEBUG=-all",
-    "--socket=system-bus",
-    "--socket=session-bus",
-    "--talk-name=org.freedesktop.secrets",
-    "--talk-name=org.freedesktop.portal.Documents",
-    "--system-talk-name=org.freedesktop.secrets",
-    "--system-talk-name=org.freedesktop.portal.Documents",
-    "--talk-name=org.freedesktop.portal.desktop",
-    "--system-talk-name=org.freedesktop.portal.desktop",
-    "--device=all",
-    "--filesystem=xdg-run/dconf",
-    "--filesystem=~/.config/dconf:ro",
-    "--talk-name=ca.desrt.dconf",
-    "--env=DCONF_USER_CONFIG_DIR=.config/dconf"
+    "--talk-name=org.freedesktop.portal.Documents"
   ],
   "modules": [
     {
