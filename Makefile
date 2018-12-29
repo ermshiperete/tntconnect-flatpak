@@ -17,3 +17,12 @@ wine:
 
 wine-package: wine
 	flatpak build-bundle --verbose --arch=i386 tntconnect-repo wine.BaseApp.flatpak de.ermshiperete.wine.BaseApp 4.0
+
+sign:
+	flatpak build-sign --verbose --arch=i386 --gpg-sign=E9140597606020D3 tntconnect-repo  de.ermshiperete.wine.BaseApp 4.0
+	flatpak build-sign --verbose --arch=i386 --gpg-sign=E9140597606020D3 tntconnect-repo  com.tntware.TntConnect
+
+deltas:
+	flatpak build-update-repo --generate-static-deltas --verbose --gpg-sign=E9140597606020D3  --prune tntconnect-repo
+
+complete: wine-package package sign deltas

@@ -3,7 +3,7 @@
   "branch": "master",
   "runtime": "org.freedesktop.Platform/i386",
   "sdk": "org.freedesktop.Sdk/i386",
-  "runtime-version": "1.6",
+  "runtime-version": "18.08",
   "base": "de.ermshiperete.wine.BaseApp",
   "base-version": "4.0",
   "tags": [

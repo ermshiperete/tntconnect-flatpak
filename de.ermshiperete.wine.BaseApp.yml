@@ -2,7 +2,7 @@ id: de.ermshiperete.wine.BaseApp
 branch: 4.0
 
 runtime: org.freedesktop.Platform
-runtime-version: 1.6
+runtime-version: '18.08'
 sdk: org.freedesktop.Sdk
 
 platform-extensions:
@@ -26,17 +26,11 @@ cleanup:
   - /man
   - /share/man
 
-cleanup-commands:
-  - /usr/libexec/freedesktop-post.sh
-
 cleanup-platform:
   - /include
   - /share/aclocal
   - /share/pkgconfig
   - /lib/pkgconfig
-
-cleanup-platform-commands:
-  - /usr/libexec/freedesktop-post.sh
 
 build-options:
   cflags: -O2 -g -fstack-protector-strong -D_FORTIFY_SOURCE=2
