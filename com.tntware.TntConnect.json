@@ -19,6 +19,7 @@
   "finish-args": [
     "--socket=x11",
     "--share=network",
+    "--share=ipc",
     "--allow=multiarch",
     "--filesystem=xdg-documents",
     "--env=WINEDEBUG=-all",
