@@ -26,6 +26,18 @@
       },
       // Use the standard MS compiler pattern to detect errors, warnings and infos
       "problemMatcher": "$msCompile"
+    },
+    {
+      "label": "complete",
+      "type": "shell",
+      "command": "make",
+      "args": ["complete"],
+      "group": "build",
+      "presentation": {
+        "reveal": "always"
+      },
+      // Use the standard MS compiler pattern to detect errors, warnings and infos
+      "problemMatcher": "$msCompile"
     }
   ]
 }
