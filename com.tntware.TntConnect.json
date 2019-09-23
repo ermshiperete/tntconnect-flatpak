@@ -50,18 +50,18 @@
       "build-commands": [
         "install -d /app/bin",
         "install tntconnect.sh /app/bin",
-        "/app/7zip/bin/7z -y x TntConnect.3.5.10.dmg",
-        "rm -rf TntConnect\\ 3.5.10/TntConnect.app/Contents/Resources/wineprefix/dosdevices/c",
-        "ln -sf ../drive_c TntConnect\\ 3.5.10/TntConnect.app/Contents/Resources/wineprefix/dosdevices/c:",
-        "ln -sf / TntConnect\\ 3.5.10/TntConnect.app/Contents/Resources/wineprefix/dosdevices/z:",
+        "/app/7zip/bin/7z -y x TntConnect.3.5.24.dmg",
+        "rm -rf TntConnect\\ 3.5.24/TntConnect.app/Contents/Resources/wineprefix/dosdevices/c",
+        "ln -sf ../drive_c TntConnect\\ 3.5.24/TntConnect.app/Contents/Resources/wineprefix/dosdevices/c:",
+        "ln -sf / TntConnect\\ 3.5.24/TntConnect.app/Contents/Resources/wineprefix/dosdevices/z:",
         "install -d /app/tntconnect",
-        "cp -a TntConnect\\ 3.5.10/TntConnect.app/Contents/Resources/wineprefix /app/tntconnect/"
+        "cp -a TntConnect\\ 3.5.24/TntConnect.app/Contents/Resources/wineprefix /app/tntconnect/"
       ],
       "sources": [
         {
           "type": "file",
-          "url": "https://download.tntware.com/tntconnect/archive/3.5.10/TntConnect.3.5.10.dmg",
-          "sha256": "72d1821373510ec5cfe4c06dfc2a448f728c8853efdc8b1a7f0ae69e147853cb"
+          "url": "https://download.tntware.com/tntconnect/archive/3.5.24/TntConnect.3.5.24.dmg",
+          "sha256": "a3af0ddeacdd068cf9e2ebcea0b61ee448758f315fe51ca2fda27c0a5f3f8066"
         },
         {
           "type": "file",

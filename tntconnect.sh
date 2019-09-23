@@ -3,7 +3,7 @@
 export WINEPREFIX="/var/data/tntconnect"
 export WINEARCH="win32"
 
-VERSION_NUM="3.5.10"
+VERSION_NUM="3.5.24"
 VERSION_FILE="${WINEPREFIX}/com.tntware.TntConnect.version"
 
 RUN_DIR="${WINEPREFIX}/drive_c/Program Files/TntWare/TntConnect"
