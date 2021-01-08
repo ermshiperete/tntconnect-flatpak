@@ -22,6 +22,8 @@
     "--share=ipc",
     "--allow=multiarch",
     "--filesystem=xdg-documents",
+    "--filesystem=~/.dropbox",
+    "--filesystem=~/Dropbox",
     "--env=WINEDEBUG=-all",
     "--talk-name=org.freedesktop.portal.Documents"
   ],
