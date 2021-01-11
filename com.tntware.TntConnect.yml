@@ -1,0 +1,191 @@
+id: com.tntware.TntConnect
+branch: master
+
+runtime: org.freedesktop.Platform/i386
+runtime-version: '18.08'
+sdk: org.freedesktop.Sdk/i386
+tags:
+  - proprietary
+
+command: tntconnect.sh
+
+platform-extensions:
+  - org.freedesktop.Platform.Locale
+
+inherit-extensions:
+  - org.freedesktop.Platform.GL
+  - org.freedesktop.Platform.Timezones
+  - org.freedesktop.Platform.GStreamer
+  - org.freedesktop.Platform.VAAPI.Intel
+  - org.freedesktop.Sdk.Extension
+
+finish-args:
+  - --allow=multiarch
+  - --env=PATH=/app/bin:/app/lib/wine/bin:/app/lib/wine-32bit/bin:/app/lib/32bit/wine:/usr/lib/wine/bin:/usr/lib/wine-32bit/bin:/usr/bin:/usr/lib/32bit/bin
+  - --env=XDG_DATA_DIRS=/app/share:/usr/share:/usr/share/runtime/share:/run/host/share
+  - --env=WINEDEBUG=-all
+  - --env=WINEPREFIX=/var/data/wine
+  - --socket=x11
+  - --share=network
+  - --share=ipc
+  - --filesystem=xdg-documents
+  - --filesystem=~/.dropbox
+  - --filesystem=~/Dropbox
+  - --talk-name=org.freedesktop.portal.Documents
+
+cleanup:
+  - /man
+  - /share/man
+
+cleanup-platform:
+  - /include
+  - /share/aclocal
+  - /share/pkgconfig
+  - /lib/pkgconfig
+
+build-options:
+  cflags: -O2 -g -fstack-protector-strong -D_FORTIFY_SOURCE=2
+  cxxflags: -O2 -g -fstack-protector-strong -D_FORTIFY_SOURCE=2
+  ldflags: -fstack-protector-strong -Wl,-z,relro,-z,now
+  prefix: /app
+  env:
+    V: '1'
+
+modules:
+  - name: platform-setup
+    buildsystem: simple
+    build-commands:
+      - mkdir -p /app/lib/32bit
+      - mkdir -p /app/lib/wine
+      - mkdir -p /app/lib/extension
+
+  - name: wine-win32
+    only-arches:
+      - i386
+    config-opts:
+      - --disable-win64
+      - --disable-win16
+      - --disable-tests
+      - --with-x
+      - --without-ldap
+      - --without-cups
+      - --without-curses
+      - --without-capi
+      - --without-glu
+      - --without-gphoto
+      - --without-gsm
+      - --without-hal
+      - --without-netapi
+      - --without-opencl
+      - --without-pcap
+      - --without-udev
+      - --without-v4l
+      - --prefix=/app
+    cleanup:
+      - /bin/function_grep.pl
+      - /include
+      - /share/man
+      - /share/applications
+    sources:
+      - type: archive
+        url: https://dl.winehq.org/wine/source/4.0/wine-4.0.2.tar.xz
+        sha256: 994050692f8417ee206daafa5fc0ff810cc9392ffda1786ac0f0fb0cf74dbd74
+
+  - name: wine-gecko
+    buildsystem: simple
+    build-commands:
+      - install -D --target-directory=/app/share/wine/gecko/ wine_gecko-*.msi
+    no-make-install: true
+    sources:
+      - type: file
+        url: https://dl.winehq.org/wine/wine-gecko/2.47/wine_gecko-2.47-x86.msi
+        sha256: 3b8a361f5d63952d21caafd74e849a774994822fb96c5922b01d554f1677643a
+
+  - name: wine-mono
+    buildsystem: simple
+    build-commands:
+      - install -D --target-directory=/app/share/wine/mono/ wine-mono-*.msi
+    no-make-install: true
+    sources:
+    - type: file
+      url: https://dl.winehq.org/wine/wine-mono/4.9.2/wine-mono-4.9.2.msi
+      sha256: b91f4656fca72d036934c2a9e845b2dfadad291e48e0b013fb2b08698200ff74
+
+  - name: cabextract
+    buildsystem: autotools
+    sources:
+      - type: archive
+        url: https://www.cabextract.org.uk/cabextract-1.9.1.tar.gz
+        sha256: afc253673c8ef316b4d5c29cc4aa8445844bee14afffbe092ee9469405851ca7
+
+  - name: winetricks
+    buildsystem: simple
+    build-commands:
+      - make
+      - make PREFIX=/app install
+    sources:
+      - type: archive
+        url: https://github.com/Winetricks/winetricks/archive/20190912.zip
+        sha256: 4229d3b356834b19c1cce005d8a03d194e4e0bc7d4e7e15b4bc552ed25c1b38c
+
+  - name: 7zip
+    buildsystem: simple
+    build-options:
+      cflags: -O1 -pipe
+      env:
+        V: 0
+    build-commands:
+      - make all3
+      - make DEST_HOME=/app/7zip DEST_MAN=/app/7zip/share/man  DEST_SHARE_DOC=/app/7zip/share/doc/p7zip-16.02 install
+    sources:
+      - type: archive
+        url: https://downloads.sourceforge.net/p7zip/p7zip_16.02_src_all.tar.bz2
+        sha256: 5eb20ac0e2944f6cb9c2d51dd6c4518941c185347d4089ea89087ffdd6e2341f
+
+  - name: tntconnect
+    buildsystem: simple
+    build-commands:
+      - install -d /app/bin
+      - install tntconnect.sh /app/bin
+      - /app/7zip/bin/7z -y x TntConnect.3.5.24.dmg
+      - rm -rf 'TntConnect 3.5.24/TntConnect.app/Contents/Resources/wineprefix/dosdevices/c'
+      - ln -sf ../drive_c 'TntConnect 3.5.24/TntConnect.app/Contents/Resources/wineprefix/dosdevices/c:'
+      - ln -sf / 'TntConnect 3.5.24/TntConnect.app/Contents/Resources/wineprefix/dosdevices/z:'
+      - install -d /app/tntconnect
+      - cp -a 'TntConnect 3.5.24/TntConnect.app/Contents/Resources/wineprefix' /app/tntconnect/
+    sources:
+      - type: file
+        url: https://download.tntware.com/tntconnect/archive/3.5.24/TntConnect.3.5.24.dmg
+        sha256: a3af0ddeacdd068cf9e2ebcea0b61ee448758f315fe51ca2fda27c0a5f3f8066
+      - type: file
+        path: tntconnect.sh
+
+  - name: metadata
+    buildsystem: simple
+    build-commands:
+      - install -Dm644 com.tntware.TntConnect.256x256.png /app/share/icons/hicolor/256x256/apps/com.tntware.TntConnect.png
+      - install -Dm644 com.tntware.TntConnect.128x128.png /app/share/icons/hicolor/128x128/apps/com.tntware.TntConnect.png
+      - install -Dm644 com.tntware.TntConnect.64x64.png /app/share/icons/hicolor/64x64/apps/com.tntware.TntConnect.png
+      - install -Dm644 com.tntware.TntConnect.48x48.png /app/share/icons/hicolor/48x48/apps/com.tntware.TntConnect.png
+      - install -Dm644 com.tntware.TntConnect.32x32.png /app/share/icons/hicolor/32x32/apps/com.tntware.TntConnect.png
+      - install -Dm644 com.tntware.TntConnect.16x16.png /app/share/icons/hicolor/16x16/apps/com.tntware.TntConnect.png
+      - install -D --mode=644 com.tntware.TntConnect.desktop /app/share/applications/com.tntware.TntConnect.desktop
+      - install -D --mode=644 com.tntware.TntConnect.appdata.xml /app/share/metainfo/com.tntware.TntConnect.appdata.xml
+    no-make-install: true
+    sources:
+      - type: file
+        path: icons/com.tntware.TntConnect.256x256.png
+      - type: file
+        path: icons/com.tntware.TntConnect.128x128.png
+      - type: file
+        path: icons/com.tntware.TntConnect.64x64.png
+      - type: file
+        path: icons/com.tntware.TntConnect.48x48.png
+      - type: file
+        path: icons/com.tntware.TntConnect.32x32.png
+      - type: file
+        path: icons/com.tntware.TntConnect.16x16.png
+      - type: file
+        path: com.tntware.TntConnect.desktop
+      - type: file
+        path: com.tntware.TntConnect.appdata.xml
