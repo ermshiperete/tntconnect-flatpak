@@ -1,6 +1,6 @@
 [Flatpak Ref]
 Name=com.tntware.TntConnect
-Branch=master
+Branch=stable
 Title=TntConnect
 Url=https://beilharz-family.de/tntconnect-repo/
 RuntimeRepo=https://dl.flathub.org/repo/flathub.flatpakrepo
