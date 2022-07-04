@@ -38,6 +38,24 @@
       },
       // Use the standard MS compiler pattern to detect errors, warnings and infos
       "problemMatcher": "$msCompile"
+    },
+    {
+      "label": "run",
+      "type": "shell",
+      "command": "flatpak-builder",
+      "args": [
+        "--run",
+        "build-dir",
+        "com.tntware.TntConnect.yml",
+        "tntconnect.sh"
+      ],
+      "group": "test",
+      "presentation": {
+        "reveal": "always"
+      },
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
     }
   ]
 }
