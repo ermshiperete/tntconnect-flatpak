@@ -30,8 +30,6 @@ inherit-extensions:
 finish-args:
   - --allow=devel # Without this "System Info" and "Gift Input" will crash
   - --allow=multiarch
-  - --env=PATH=/app/bin:/app/lib/wine/bin:/app/lib/wine-32bit/bin:/app/lib/32bit/wine:/usr/lib/wine/bin:/usr/lib/wine-32bit/bin:/usr/bin:/usr/lib/32bit/bin
-  - --env=XDG_DATA_DIRS=/app/share:/usr/share:/usr/share/runtime/share:/run/host/share
   - --env=WINEDEBUG=-all
   - --env=WINEPREFIX=/var/data/wine
   - --socket=x11
@@ -52,14 +50,6 @@ cleanup-platform:
   - /share/aclocal
   - /share/pkgconfig
   - /lib/pkgconfig
-
-build-options:
-  cflags: -O2 -g -fstack-protector-strong -D_FORTIFY_SOURCE=2
-  cxxflags: -O2 -g -fstack-protector-strong -D_FORTIFY_SOURCE=2
-  ldflags: -fstack-protector-strong -Wl,-z,relro,-z,now
-  prefix: /app
-  env:
-    V: '1'
 
 modules:
   - name: tntconnect
@@ -169,7 +159,6 @@ modules:
   - name: metadata
     buildsystem: simple
     build-commands:
-      - install -Dm644 com.tntware.TntConnect.256x256.png /app/share/icons/hicolor/256x256/apps/com.tntware.TntConnect.png
       - install -Dm644 com.tntware.TntConnect.128x128.png /app/share/icons/hicolor/128x128/apps/com.tntware.TntConnect.png
       - install -Dm644 com.tntware.TntConnect.64x64.png /app/share/icons/hicolor/64x64/apps/com.tntware.TntConnect.png
       - install -Dm644 com.tntware.TntConnect.48x48.png /app/share/icons/hicolor/48x48/apps/com.tntware.TntConnect.png
@@ -179,8 +168,6 @@ modules:
       - install -D --mode=644 com.tntware.TntConnect.appdata.xml /app/share/metainfo/com.tntware.TntConnect.appdata.xml
     no-make-install: true
     sources:
-      - type: file
-        path: icons/com.tntware.TntConnect.256x256.png
       - type: file
         path: icons/com.tntware.TntConnect.128x128.png
       - type: file
