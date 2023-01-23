@@ -40,6 +40,18 @@
       "problemMatcher": "$msCompile"
     },
     {
+      "label": "deploy",
+      "type": "shell",
+      "command": "make",
+      "args": ["deploy"],
+      "group": "build",
+      "presentation": {
+        "reveal": "always"
+      },
+      // Use the standard MS compiler pattern to detect errors, warnings and infos
+      "problemMatcher": "$msCompile"
+    },
+    {
       "label": "run",
       "type": "shell",
       "command": "flatpak-builder",

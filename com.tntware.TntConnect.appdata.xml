@@ -62,6 +62,14 @@
     </content_rating>
 
     <releases>
+        <release date="2023-01-23" version="4.0.41">
+            <description>
+                <ul>
+                    <li>Upgrade to new version 4.0.41</li>
+                    <li>Upgrade org.freedesktop.Platform runtime to 22.08</li>
+                </ul>
+            </description>
+        </release>
         <release date="2022-07-01" version="4.0.32">
             <description>
                 <ul>

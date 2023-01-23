@@ -2,10 +2,10 @@ id: com.tntware.TntConnect
 branch: stable
 
 runtime: org.freedesktop.Platform
-runtime-version: '21.08'
+runtime-version: '22.08'
 sdk: org.freedesktop.Sdk
 base: org.winehq.Wine
-base-version: 'stable-21.08'
+base-version: 'stable-22.08'
 tags:
   - proprietary
 
@@ -75,8 +75,8 @@ modules:
       - install corefonts/*.exe /app/tmp/winetricks/corefonts
     sources:
       - type: file
-        url: https://download.tntware.com/tntconnect/archive/4.0.32/SetupTntConnect.exe
-        sha256: b14d0d33f7baa18a1f528cfe54e2d2ce1189086c0396f54836ab615672377c96
+        url: https://download.tntware.com/tntconnect/archive/4.0.41/SetupTntConnect.exe
+        sha256: 11f978e8004715123d5a3cb0bf48231fdb3f1294997eebc2ebfc18cbdf3e50ca
       - type: file
         url: https://download.tntware.com/tntconnect/redist/chromium_3_2454_1344c.7zip
         sha256: 41cdaa707ac77d3c76c79087a5880782cefc0fa4d91c5c37486cd19d1c860f66
