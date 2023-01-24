@@ -5,7 +5,7 @@ date_now := $(shell date +%F_%H:%M:%S)
 all: build
 
 build:
-	flatpak-builder --verbose --repo=tntconnect-repo --force-clean --ccache build-dir --collection-id=com.tntware.tntconnect.repo --default-branch=stable com.tntware.TntConnect.yml
+	flatpak-builder --verbose --gpg-sign=E9140597606020D3 --repo=tntconnect-repo --force-clean --ccache build-dir --collection-id=com.tntware.tntconnect.repo --default-branch=stable com.tntware.TntConnect.yml
 
 backup:
 	cp -a tntconnect-repo tntconnect-repo-$(date_now).bak
