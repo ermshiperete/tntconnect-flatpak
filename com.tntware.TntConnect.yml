@@ -1,5 +1,5 @@
 id: com.tntware.TntConnect
-branch: stable
+default-branch: 'stable'
 
 runtime: org.freedesktop.Platform
 runtime-version: '23.08'
