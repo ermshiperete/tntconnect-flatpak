@@ -2,10 +2,10 @@ id: com.tntware.TntConnect
 branch: stable
 
 runtime: org.freedesktop.Platform
-runtime-version: '22.08'
+runtime-version: '23.08'
 sdk: org.freedesktop.Sdk
 base: org.winehq.Wine
-base-version: 'stable-22.08'
+base-version: 'stable-23.08'
 tags:
   - proprietary
 
@@ -14,18 +14,20 @@ command: tntconnect.sh
 platform-extensions:
   - org.freedesktop.Platform.Locale
 
+base-extensions:
+  - org.freedesktop.Platform.Compat.i386
+  - org.winehq.Wine.DLLs
+  - org.winehq.Wine.gecko
+  - org.winehq.Wine.mono
+  - org.freedesktop.Platform.GL32
+
 # Support 32-bit at build time
 sdk-extensions:
   - org.freedesktop.Sdk.Compat.i386
   - org.freedesktop.Sdk.Extension.toolchain-i386
 
 inherit-extensions:
-  - org.freedesktop.Platform.Compat.i386
-  - org.freedesktop.Platform.GL32
   - org.freedesktop.Platform.VAAPI.Intel.i386
-  - org.winehq.Wine.DLLs
-  - org.winehq.Wine.gecko
-  - org.winehq.Wine.mono
 
 finish-args:
   - --allow=devel # Without this "System Info" and "Gift Input" will crash
@@ -75,8 +77,8 @@ modules:
       - install corefonts/*.exe /app/tmp/winetricks/corefonts
     sources:
       - type: file
-        url: https://download.tntware.com/tntconnect/archive/4.0.41/SetupTntConnect.exe
-        sha256: 11f978e8004715123d5a3cb0bf48231fdb3f1294997eebc2ebfc18cbdf3e50ca
+        url: https://download.tntware.com/tntconnect/archive/4.0.56/SetupTntConnect.exe
+        sha256: 4d342d7c3cc91227a2d109c185e7630c75cc9193a13a37170bfe718e609b42ae
       - type: file
         url: https://download.tntware.com/tntconnect/redist/chromium_3_2454_1344c.7zip
         sha256: 41cdaa707ac77d3c76c79087a5880782cefc0fa4d91c5c37486cd19d1c860f66

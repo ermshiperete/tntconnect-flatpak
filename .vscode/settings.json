@@ -14,5 +14,25 @@
     "tmp/": true,
     "tntconnect-repo/": true,
     "wineprefix/": true
-  }
+  },
+  "workbench.colorCustomizations": {
+    "activityBar.activeBackground": "#87b7af",
+    "activityBar.background": "#87b7af",
+    "activityBar.foreground": "#15202b",
+    "activityBar.inactiveForeground": "#15202b99",
+    "activityBarBadge.background": "#95609f",
+    "activityBarBadge.foreground": "#e7e7e7",
+    "commandCenter.border": "#15202b99",
+    "sash.hoverBorder": "#87b7af",
+    "statusBar.background": "#67a49a",
+    "statusBar.foreground": "#15202b",
+    "statusBarItem.hoverBackground": "#51877e",
+    "statusBarItem.remoteBackground": "#67a49a",
+    "statusBarItem.remoteForeground": "#15202b",
+    "titleBar.activeBackground": "#67a49a",
+    "titleBar.activeForeground": "#15202b",
+    "titleBar.inactiveBackground": "#67a49a99",
+    "titleBar.inactiveForeground": "#15202b99"
+  },
+  "peacock.color": "#67a49a"
 }

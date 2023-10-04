@@ -36,7 +36,7 @@ first_run() {
 
 	echo "Running TntConnect installer."
 	exec 3> >(zenity --progress --auto-close --pulsate --title "Setup TntConnect" --text "Running TntConnect installer" )
-	winetricks --unattended $package
+	# winetricks --unattended $package
 	"${WINE}" "${TNTCONNECT_SETUP}" /s
 	exec 3>&-
 

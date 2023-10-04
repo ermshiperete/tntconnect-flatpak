@@ -9,3 +9,5 @@ TntConnect.tar.gz
 *.gpg
 *.gpg.base64
 *.log
+*.pgp.base64
+*.zip
