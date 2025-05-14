@@ -2,10 +2,10 @@ id: com.tntware.TntConnect
 default-branch: 'stable'
 
 runtime: org.freedesktop.Platform
-runtime-version: '23.08'
+runtime-version: '24.08'
 sdk: org.freedesktop.Sdk
 base: org.winehq.Wine
-base-version: 'stable-23.08'
+base-version: 'stable-24.08'
 tags:
   - proprietary
 
@@ -16,7 +16,6 @@ platform-extensions:
 
 base-extensions:
   - org.freedesktop.Platform.Compat.i386
-  - org.winehq.Wine.DLLs
   - org.winehq.Wine.gecko
   - org.winehq.Wine.mono
   - org.freedesktop.Platform.GL32
@@ -77,11 +76,11 @@ modules:
       - install corefonts/*.exe /app/tmp/winetricks/corefonts
     sources:
       - type: file
-        url: https://download.tntware.com/tntconnect/archive/4.0.56/SetupTntConnect.exe
-        sha256: 4d342d7c3cc91227a2d109c185e7630c75cc9193a13a37170bfe718e609b42ae
+        url: https://download.tntware.com/tntconnect/archive/4.1.1/SetupTntConnect.exe
+        sha256: 0af8c579cb66c2ed476fdb4de33d6b887da8a2a10e2646695b8acf939de6ddb5
       - type: file
-        url: https://download.tntware.com/tntconnect/redist/chromium_3_2454_1344c.7zip
-        sha256: 41cdaa707ac77d3c76c79087a5880782cefc0fa4d91c5c37486cd19d1c860f66
+        url: https://download.tntware.com/tntconnect/redist/chromium_80_1_15.7zip
+        sha256: 002a6d61d65c00c2948209edeb44097f5323d08f091c6b117d470fd2377b92c2
       - type: file
         url: https://download.tntware.com/tntconnect/redist/jet40sp8_wine3.7zip
         sha256: e32db98ff4677a2c5686eb996a77020995c01575b68e3ab9bcd91e4b534e7fb8

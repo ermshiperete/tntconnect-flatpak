@@ -1,7 +1,7 @@
 .flatpak-builder/
 build-dir/
 build-dir-wine/
-tntconnect-repo/
+tntconnect-repo*/
 tmp/
 TntConnect.tar.gz
 *.flatpak
