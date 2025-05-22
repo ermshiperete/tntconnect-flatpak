@@ -5,7 +5,7 @@ export WINEARCH="win32"
 export WINEDLLOVERRIDES="msado15=n,b"
 export XDG_CACHE_HOME="/app/tmp"
 
-VERSION_NUM="4.0.41"
+VERSION_NUM="4.1.1"
 VERSION_FILE="${WINEPREFIX}/com.tntware.TntConnect.version"
 
 TNTCONNECT_SETUP=/app/bin/SetupTntConnect.exe

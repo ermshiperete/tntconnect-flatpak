@@ -76,6 +76,7 @@ modules:
       - install corefonts/*.exe /app/tmp/winetricks/corefonts
     sources:
       - type: file
+        # also update com.tntware.TntConnect.appdata.xml and tntconnect.sh!
         url: https://download.tntware.com/tntconnect/archive/4.1.1/SetupTntConnect.exe
         sha256: 0af8c579cb66c2ed476fdb4de33d6b887da8a2a10e2646695b8acf939de6ddb5
       - type: file
